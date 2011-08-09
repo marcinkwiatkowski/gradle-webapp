@@ -1,0 +1,1 @@
+This project shows simple use of <a href="https://github.com/bmuschko/gradle-cargo-plugin">gradle-cargo-plugin</a>. See http://passionatedeveloper.com/2011/08/09/deploying-using-gradle/ to learn more.
