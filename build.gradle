@@ -1,0 +1,35 @@
+apply plugin: 'cargo'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+            name = 'GitHub'
+            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+        }
+    }    
+    dependencies {
+        classpath 'bmuschko:gradle-cargo-plugin:0.3'
+    }
+}
+
+cargo {
+	containerId = 'tomcat6x'
+	port = 8080
+	context = "mycontext"
+	remote {
+		hostname = "192.168.1.101"
+		username = "tomcat"
+		password = "tomcat"
+	}
+}
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    cargo 'org.codehaus.cargo:cargo-core-uberjar:1.1.1',
+          'org.codehaus.cargo:cargo-ant:1.1.1',
+          'jaxen:jaxen:1.1.1'
+}
